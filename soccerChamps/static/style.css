@@ -1,0 +1,138 @@
+:root {
+    --primary-color: #003366;    
+    --accent-color: #cc0000;    
+    --bg-light: #f4f6f8;         
+    --card-bg: #ffffff;         
+    --text-dark: #1a1a1b;        
+    --text-muted: #666666;       
+    --border-soft: #e1e4e8;      
+    --table-header: #f8f9fa;     
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+div[name="cardForm"] {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background: var(--card-bg);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    border-top: 4px solid var(--primary-color); 
+    padding: 24px;
+}
+
+form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--border-soft);
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+select, input {
+    padding: 10px 14px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    color: var(--text-dark);
+    font-size: 14px;
+    min-width: 150px;
+    transition: border-color 0.15s ease-in-out;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.1);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #002244;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th {
+    background-color: var(--table-header);
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding: 12px 10px;
+    border-bottom: 2px solid var(--border-soft);
+    text-align: left;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+td:first-child {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tr:hover {
+    background-color: #f1f4f9;
+}
+
+p {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-muted);
+    font-style: italic;
+    background: #fdfdfd;
+    border: 1px dashed var(--border-soft);
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}

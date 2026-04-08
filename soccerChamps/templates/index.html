@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonderkids | Player Scout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div name="cardForm">
+        <form method="POST">
+
+            <input type="text" name="search_query" placeholder="Search Wonderkid...">
+
+            <select name="position">
+                <option value="">All Positions</option>
+                <option value="forward">Forward</option>
+                <option value="midfielder">Midfielder</option>
+                <option value="defender">Defender</option>
+                <option value="goalkeeper">Goalkeeper</option>
+            </select>
+
+            <select name="nationality">
+                <option value="">All Nationalities</option>
+                <option value="albania">Albania</option>
+                <option value="algeria">Algeria</option>
+                <option value="argentina">Argentina</option>
+                <option value="australia">Australia</option>
+                <option value="austria">Austria</option>
+                <option value="belarus">Belarus</option>
+                <option value="belgium">Belgium</option>
+                <option value="bosnia-and-herzegovina">Bosnia and Herzegovina</option>
+                <option value="brazil">Brazil</option>
+                <option value="bulgaria">Bulgaria</option>
+                <option value="cameroon">Cameroon</option>
+                <option value="canada">Canada</option>
+                <option value="chile">Chile</option>
+                <option value="china">China</option>
+                <option value="colombia">Colombia</option>
+                <option value="congo">Congo</option>
+                <option value="croatia">Croatia</option>
+                <option value="czech-republic">Czech Republic</option>
+                <option value="denmark">Denmark</option>
+                <option value="ecuador">Ecuador</option>
+                <option value="egypt">Egypt</option>
+                <option value="england">England</option>
+                <option value="finland">Finland</option>
+                <option value="france">France</option>
+                <option value="germany">Germany</option>
+                <option value="ghana">Ghana</option>
+                <option value="greece">Greece</option>
+                <option value="hungary">Hungary</option>
+                <option value="iceland">Iceland</option>
+                <option value="ireland">Ireland</option>
+                <option value="israel">Israel</option>
+                <option value="italy">Italy</option>
+                <option value="ivory-coast">Ivory Coast</option>
+                <option value="japan">Japan</option>
+                <option value="liechtenstein">Liechtenstein</option>
+                <option value="mali">Mali</option>
+                <option value="mexico">Mexico</option>
+                <option value="morocco">Morocco</option>
+                <option value="netherlands">Netherlands</option>
+                <option value="nigeria">Nigeria</option>
+                <option value="north-macedonia">North Macedonia</option>
+                <option value="norway">Norway</option>
+                <option value="paraguay">Paraguay</option>
+                <option value="peru">Peru</option>
+                <option value="poland">Poland</option>
+                <option value="portugal">Portugal</option>
+                <option value="romania">Romania</option>
+                <option value="russia">Russia</option>
+                <option value="scotland">Scotland</option>
+                <option value="senegal">Senegal</option>
+                <option value="serbia">Serbia</option>
+                <option value="slovakia">Slovakia</option>
+                <option value="slovenia">Slovenia</option>
+                <option value="south-korea">South Korea</option>
+                <option value="spain">Spain</option>
+                <option value="sweden">Sweden</option>
+                <option value="switzerland">Switzerland</option>
+                <option value="togo">Togo</option>
+                <option value="turkey">Turkey</option>
+                <option value="ukraine">Ukraine</option>
+                <option value="uruguay">Uruguay</option>
+                <option value="usa">USA</option>
+                <option value="venezuela">Venezuela</option>
+                <option value="wales">Wales</option>
+            </select>
+
+            <select name="league">
+                <option value="">All Leagues</option>
+
+                <optgroup label="Europa">
+                    <option value="bundesliga">Bundesliga</option>
+                    <option value="bundesliga 2">Bundesliga 2</option>
+                    <option value="jupiler pro league">Jupiler Pro League</option>
+                    <option value="superliga danemark">Superliga (Denmark)</option>
+                    <option value="premiership">Premiership</option>
+                    <option value="laliga">LaLiga</option>
+                    <option value="laliga 2">LaLiga 2</option>
+                    <option value="ligue 1">Ligue 1</option>
+                    <option value="ligue 2">Ligue 2</option>
+                    <option value="super league greece">Super League (Greece)</option>
+                    <option value="premier league">Premier League</option>
+                    <option value="championship">Championship</option>
+                    <option value="league one">League One</option>
+                    <option value="league two">League Two</option>
+                    <option value="serie a">Serie A</option>
+                    <option value="serie b">Serie B</option>
+                    <option value="eredivisie">Eredivisie</option>
+                    <option value="liga portugal">Liga Portugal</option>
+                    <option value="russian premier league">Russian Premier League</option>
+                    <option value="super league switzerland">Super League (Switzerland)</option>
+                    <option value="super lig">Süper Lig</option>
+                </optgroup>
+
+                <optgroup label="América">
+                    <option value="liga profesional">Liga Profesional</option>
+                    <option value="brasileirao">Brasileirão</option>
+                    <option value="mls">MLS</option>
+                    <option value="liga mx">Liga MX</option>
+                </optgroup>
+
+                <optgroup label="Asia / Oceanía">
+                    <option value="a-league">A-League</option>
+                    <option value="chinese super league">Chinese Super League</option>
+                    <option value="j1 league">J1 League</option>
+                </optgroup>
+            </select>
+
+            <input type="number" name="min_age" placeholder="Min Age">
+            <input type="number" name="max_age" placeholder="Max Age">
+
+            <button type="submit">Filter Results</button>
+        </form>
+
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Nationality</th>
+                        <th>Position</th>
+                        <th>Club</th>
+                        <th>League</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in results %}
+                    <tr>
+                        <td>{{ player["name"] }}</td>
+                        <td>{{ player["age"] }}</td>
+                        <td>{{ player["nationality"] }}</td>
+                        <td>{{ player["position"] }}</td>
+                        <td>{{ player["club"] }}</td>
+                        <td>{{ player["league"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No players found matching your criteria.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
